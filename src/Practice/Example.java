@@ -45,13 +45,68 @@ void middlechar(String s){
 void sumofdigitsexcept(int n)
 {
 
-     String number=Integer.toString(n);
-//    int result=(Integer.parseInt(number.charAt(0))+((int)number.charAt(number.length()-1));
-int result=Integer.parseInt(String.valueOf(number.charAt(0)))+ Integer.parseInt(String.valueOf(number.charAt(number.length()-1)));
-for(int i=1;i<number.length()-1;i++){
-    result-=Integer.parseInt(String.valueOf(number.charAt(i)));
+    int temp = n;
+    int last = temp % 10;
+    temp = temp / 10;
+    int sumMiddle = 0;
+
+    while (temp > 9) {
+        int digit = temp % 10;
+        sumMiddle += digit;
+        temp = temp / 10;
+    }
+
+    int first = temp;
+
+    int sumFirstLast = first + last;
+
+    if (sumFirstLast == sumMiddle)
+        System.out.println("equal");
+    else
+        System.out.println("not equal");
+
+
 }
-System.out.println(result==0?"Equal":"Not Equal");
+void sumoflastfirst(int n){
+    int temp = n;
+
+
+    int last = temp % 10;
+    temp = temp / 10;
+
+    boolean isValid = true;
+
+    while (temp > 9) {
+        int digit = temp % 10;
+
+        if (digit >= last) {
+            isValid = false;
+            break;
+        }
+
+        temp = temp / 10;
+    }
+
+
+    int first = temp;
+
+
+    if (isValid && last > 0) {
+        temp = n / 10;
+
+        while (temp > 9) {
+            int digit = temp % 10;
+
+            if (digit >= first) {
+                isValid = false;
+                break;
+            }
+
+            temp = temp / 10;
+        }
+    }
+
+    System.out.println(isValid);
 
 }
 void vowels(String s){
@@ -85,10 +140,26 @@ void vowelonce(String s){
        }
        System.out.println(result);
 }
-void stringchar(String s)
-{
+void stringchar(String s) {
 
-}    public static void main(String[] args) {
+}
+void toggle(String s){
+        String res="";
+    for (int i = 0; i < s.length(); i++){
+        char ch = s.charAt(i);
+
+        if (Character.isUpperCase(ch)) {
+            res+=(Character.toLowerCase(ch));
+        }
+        else if (Character.isLowerCase(ch)) {
+            res+=(Character.toUpperCase(ch));
+        }
+
+
+    }
+    System.out.println(res);
+}
+public static void main(String[] args) {
         Example obj=new Example();
         obj.sumofDigits(101);
         obj.sumofDigits(567);
@@ -99,10 +170,11 @@ void stringchar(String s)
         obj.middlechar("World");
         obj.middlechar("6969");
         obj.sumofdigitsexcept(75547 );
+        obj.sumoflastfirst(8567);
         obj.vowels("Helloworld");
         obj.vowels("JackspArrow");
         obj.vowelonce("Helloworld");
         obj.vowelonce("Jacksparrow");
-
+obj.toggle("Ajay");
     }
 }
