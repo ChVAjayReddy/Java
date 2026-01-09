@@ -38,5 +38,6 @@ public class day4 {
         obj.isequal(765);
         System.out.println(obj.isless(1672));
         System.out.println(obj.isless(84719));
+
     }
 }
