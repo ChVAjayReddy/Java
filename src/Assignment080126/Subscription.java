@@ -82,6 +82,7 @@ public class Subscription {
                 case 4:
                     running = false;
                     System.out.println("Program exited.");
+
                     break;
                 default:
                     System.out.println("Enter correct choice");
